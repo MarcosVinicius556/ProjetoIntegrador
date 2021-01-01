@@ -37,10 +37,14 @@ class TipoProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $tipoProduto = new TipoProduto();
-        $tipoProduto->descricao = $request->descricao;
-        $tipoProduto->save();
-        return view('TipoPrdouto.create');
+       $produto = new Produto();
+       $produto->nome = $request->nome;
+       $produto->preco = $request->preco;
+       $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
+       $produto->save();
+
+       $tipoProdutos = DB::select('select * from Tipo_Produtos');
+       return view('Produto.create')->with('tipoProdutos', $tipoProdutos);
     }
 
     /**

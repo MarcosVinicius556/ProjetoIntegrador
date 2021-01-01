@@ -17,4 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::resource('tipoproduto', 'TipoProdutoController');
+Route::get('tipoproduto/create', 'TipoProdutoController@create')->name('tipoproduto.create');
+Route::post('tipoproduto', 'TipoProdutoController@store')->name('store');
 Route::resource('tipoproduto', 'TipoProdutoController');
